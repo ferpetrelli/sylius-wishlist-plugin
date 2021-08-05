@@ -1,0 +1,10 @@
+services:
+  webburza_sylius_wishlist.factory.wishlist_view_factory:
+    class: Webburza\SyliusWishlistPlugin\Factory\View\WishlistViewFactory
+    arguments:
+      - "@webburza_sylius_wishlist.factory.wishlist_item_view_factory"
+
+  webburza_sylius_wishlist.factory.wishlist_item_view_factory:
+    class: Webburza\SyliusWishlistPlugin\Factory\View\WishlistItemViewFactory
+    arguments:
+      - "@sylius.shop_api_plugin.factory.product_view_factory"

@@ -13,7 +13,7 @@
             {% for item in wishlist.items %}
                 <tr>
                     <td>
-                        <a href="{{ path('sylius_shop_product_show', {slug: item.productVariant.product.slug}) }}">
+                        <a href="{{ path('sylius_admin_product_update', {id: item.productVariant.product.id}) }}">
                             {{ item.productVariant.product.name }}
                         </a>
                         <br>

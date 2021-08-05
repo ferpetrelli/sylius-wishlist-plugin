@@ -1,6 +1,7 @@
 services:
     webburza_sylius_wishlist.controller.shop.wishlist:
         class: Webburza\SyliusWishlistPlugin\Controller\Shop\WishlistController
+        tags: ['controller.service_arguments']
         arguments:
             - '@webburza_sylius_wishlist.provider.logged_in_user'
             - '@webburza_sylius_wishlist.repository.wishlist'
@@ -8,9 +9,16 @@ services:
             - '@translator'
             - '@fos_rest.view_handler.default'
             - '%webburza_sylius_wishlist.config.multiple%'
+        calls:
+            - method: setContainer
+              arguments: ['@service_container']
 
     webburza_sylius_wishlist.controller.shop.wishlist_item:
         class: Webburza\SyliusWishlistPlugin\Controller\Shop\WishlistItemController
+        tags: ['controller.service_arguments']
+        calls:
+            - method: setContainer
+              arguments: ['@service_container']
         arguments:
             - '@webburza_sylius_wishlist.provider.logged_in_user'
             - '@webburza_sylius_wishlist.repository.wishlist_item'
@@ -24,8 +32,37 @@ services:
             - '@webburza_sylius_wishlist.factory.wishlist_item'
             - '%webburza_sylius_wishlist.config.multiple%'
 
+    webburza_sylius_wishlist.controller.api.wishlist:
+        class: Webburza\SyliusWishlistPlugin\Controller\Api\WishlistController
+        tags: ['controller.service_arguments']
+        calls:
+            - method: setContainer
+              arguments: ['@service_container']
+        arguments:
+            - '@webburza_sylius_wishlist.repository.wishlist'
+            - '@webburza_sylius_wishlist.provider.logged_in_user'
+            - '@webburza_sylius_wishlist.repository.wishlist_item'
+            - '@translator'
+            - '@form.factory'
+            - '@sylius.context.cart'
+            - '@sylius.repository.product_variant'
+            - '@sylius.custom_factory.order_item'
+            - '@sylius.factory.add_to_cart_command'
+            - '@webburza_sylius_wishlist.resolver.wishlist_from_request'
+            - '@webburza_sylius_wishlist.resolver.product_variant_from_request'
+            - '@webburza_sylius_wishlist.factory.wishlist_item'
+            - '@webburza_sylius_wishlist.factory.wishlist_view_factory'
+            - '@sylius.shop_api_plugin.provider.supported_locale_provider'
+            - '@sylius.context.channel'
+            - '@fos_rest.view_handler'
+            - '%webburza_sylius_wishlist.config.multiple%'
+
     webburza_sylius_wishlist.controller.account.wishlist:
         class: Webburza\SyliusWishlistPlugin\Controller\Account\WishlistController
+        tags: ['controller.service_arguments']
+        calls:
+            - method: setContainer
+              arguments: ['@service_container']
         arguments:
             - '@webburza_sylius_wishlist.repository.wishlist'
             - '@webburza_sylius_wishlist.provider.logged_in_user'

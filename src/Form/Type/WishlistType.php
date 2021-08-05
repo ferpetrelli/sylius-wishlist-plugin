@@ -8,6 +8,8 @@ use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Util\StringUtil;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class WishlistType extends AbstractResourceType
 {
@@ -35,4 +37,16 @@ class WishlistType extends AbstractResourceType
             'required' => false
         ]);
     }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+
+        $resolver->setDefaults([
+            'data_class' => $this->dataClass,
+            'validation_groups' => $this->validationGroups,
+            'csrf_protection' => false
+        ]);
+
+    }
+
 }

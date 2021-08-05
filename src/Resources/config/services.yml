@@ -1,5 +1,6 @@
 imports:
     - { resource: services/providers.yml }
+    - { resource: services/factories.yml }
     - { resource: services/controllers.yml }
     - { resource: services/resolvers.yml }
     - { resource: services/listeners.yml }

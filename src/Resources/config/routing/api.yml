@@ -1,0 +1,44 @@
+# Show the first wishlist for the current user, only if the bundle
+# is configured for a single wishlist per user, otherwise redirect
+
+webburza_sylius_wishlist_api_wishlist_list:
+    path: /list
+    methods: [GET]
+    defaults:
+        _controller: webburza_sylius_wishlist.controller.api.wishlist:indexAction
+
+webburza_sylius_wishlist_api_wishlist_create:
+    path: /list
+    methods: [POST]
+    defaults:
+        _controller: webburza_sylius_wishlist.controller.api.wishlist:createAction
+
+webburza_sylius_wishlist_api_wishlist_remove:
+    path: /list/{id}
+    methods: [DELETE]
+    defaults:
+        _controller: webburza_sylius_wishlist.controller.api.wishlist:removeAction
+
+webburza_sylius_wishlist_api_wishlist_update:
+    path: /list/{id}
+    methods: [PUT, POST]
+    defaults:
+        _controller: webburza_sylius_wishlist.controller.api.wishlist:updateAction
+
+webburza_sylius_wishlist_api_wishlist_add_item:
+    path: /list/{wishlistId}/item
+    methods: [POST]
+    defaults:
+        _controller: webburza_sylius_wishlist.controller.api.wishlist:addItemAction
+
+webburza_sylius_wishlist_api_wishlist_remove_item:
+    path: /item/{id}
+    methods: [DELETE]
+    defaults:
+        _controller: webburza_sylius_wishlist.controller.api.wishlist:removeItemAction
+
+webburza_sylius_wishlist_api_wishlist_clear:
+    path: /list/{id}/clear
+    methods: [POST]
+    defaults:
+        _controller: webburza_sylius_wishlist.controller.api.wishlist:clearAction

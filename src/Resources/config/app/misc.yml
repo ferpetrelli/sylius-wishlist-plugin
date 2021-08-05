@@ -15,3 +15,7 @@ doctrine:
 twig:
     globals:
         wishlist_provider: '@webburza_sylius_wishlist.provider.wishlist'
+
+webburza_sylius_wishlist:
+    multiple: true           # multiple wishlist mode
+    default_public: false    # used for automatically created wishlists
