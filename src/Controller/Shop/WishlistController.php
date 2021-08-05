@@ -12,8 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-// use Symfony\Component\Translation\TranslatorInterface;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Webburza\SyliusWishlistPlugin\Factory\WishlistFactoryInterface;
 use Webburza\SyliusWishlistPlugin\Model\WishlistInterface;
 use Webburza\SyliusWishlistPlugin\Provider\LoggedInUserProviderInterface;
@@ -63,7 +62,7 @@ class WishlistController extends AbstractController
         LoggedInUserProviderInterface $loggedInUserProvider,
         WishlistRepositoryInterface $wishlistRepository,
         WishlistFactoryInterface $wishlistFactory,
-        DataCollectorTranslator $translator,
+        TranslatorInterface $translator,
         ConfigurableViewHandlerInterface $restViewHandler,
         bool $multipleWishlistMode
     ) {

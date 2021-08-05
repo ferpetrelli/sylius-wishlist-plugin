@@ -16,7 +16,7 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Bundle\OrderBundle\Factory\AddToCartCommandFactoryInterface;
 use Sylius\Bundle\CoreBundle\Form\Type\Order\AddToCartType;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Webburza\SyliusWishlistPlugin\Factory\View\WishlistListView;
 use Webburza\SyliusWishlistPlugin\Factory\View\WishlistViewFactory;
 use Webburza\SyliusWishlistPlugin\Form\Type\WishlistType;
@@ -44,7 +44,7 @@ class WishlistController extends AbstractController
   protected $loggedInUserProvider;
 
   /**
-   * @var DataCollectorTranslator
+   * @var TranslatorInterface
    */
   protected $translator;
 
@@ -110,7 +110,7 @@ class WishlistController extends AbstractController
   /**
    * @param WishlistRepositoryInterface $wishlistRepository
    * @param LoggedInUserProviderInterface $loggedInUserProvider
-   * @param DataCollectorTranslator $translator
+   * @param TranslatorInterface $translator
    * @param FormFactoryInterface $formFactory
    * @param bool $multipleWishlistMode
    */
@@ -118,7 +118,7 @@ class WishlistController extends AbstractController
     WishlistRepositoryInterface $wishlistRepository,
     LoggedInUserProviderInterface $loggedInUserProvider,
     RepositoryInterface $wishlistItemRepository,
-    DataCollectorTranslator $translator,
+    TranslatorInterface $translator,
     FormFactoryInterface $formFactory,
     CartContextInterface $cartContext,
     ProductVariantRepositoryInterface $productVariantRepository,

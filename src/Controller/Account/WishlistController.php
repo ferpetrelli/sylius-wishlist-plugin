@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Webburza\SyliusWishlistPlugin\Form\Type\WishlistType;
 use Webburza\SyliusWishlistPlugin\Model\WishlistInterface;
 use Webburza\SyliusWishlistPlugin\Provider\LoggedInUserProviderInterface;
@@ -28,7 +28,7 @@ class WishlistController extends AbstractController
     protected $loggedInUserProvider;
 
     /**
-     * @var DataCollectorTranslator
+     * @var TranslatorInterface
      */
     protected $translator;
 
@@ -45,14 +45,14 @@ class WishlistController extends AbstractController
     /**
      * @param WishlistRepositoryInterface $wishlistRepository
      * @param LoggedInUserProviderInterface $loggedInUserProvider
-     * @param DataCollectorTranslator $translator
+     * @param TranslatorInterface $translator
      * @param FormFactoryInterface $formFactory
      * @param bool $multipleWishlistMode
      */
     public function __construct(
         WishlistRepositoryInterface $wishlistRepository,
         LoggedInUserProviderInterface $loggedInUserProvider,
-        DataCollectorTranslator $translator,
+        TranslatorInterface $translator,
         FormFactoryInterface $formFactory,
         bool $multipleWishlistMode
     ) {

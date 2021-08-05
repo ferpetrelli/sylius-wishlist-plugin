@@ -6,7 +6,7 @@ namespace Webburza\SyliusWishlistPlugin\Factory;
 
 use Sylius\Component\Core\Model\ShopUserInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Webburza\SyliusWishlistPlugin\Model\WishlistInterface;
 
 class WishlistFactory implements WishlistFactoryInterface
@@ -28,12 +28,12 @@ class WishlistFactory implements WishlistFactoryInterface
 
     /**
      * @param FactoryInterface $factory
-     * @param DataCollectorTranslator $translator
+     * @param TranslatorInterface $translator
      * @param bool $defaultPublic
      */
     public function __construct(
         FactoryInterface $factory,
-        DataCollectorTranslator $translator,
+        TranslatorInterface $translator,
         $defaultPublic
     ) {
         $this->factory = $factory;

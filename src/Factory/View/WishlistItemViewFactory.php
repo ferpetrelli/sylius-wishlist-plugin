@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace Webburza\SyliusWishlistPlugin\Factory\View;
 
-use Sylius\Component\Core\Model\ShopUserInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Symfony\Component\Translation\DataCollectorTranslator;
-// use Symfony\Component\Translation\TranslatorInterface;
-use Webburza\SyliusWishlistPlugin\Model\WishlistInterface;
 use Sylius\ShopApiPlugin\Factory\Product\ProductViewFactoryInterface;
 use Webburza\SyliusWishlistPlugin\Model\WishlistItemInterface;
 
