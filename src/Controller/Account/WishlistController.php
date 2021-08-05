@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Webburza\SyliusWishlistPlugin\Controller\Account;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Translation\DataCollectorTranslator;
 use Webburza\SyliusWishlistPlugin\Form\Type\WishlistType;
 use Webburza\SyliusWishlistPlugin\Model\WishlistInterface;
 use Webburza\SyliusWishlistPlugin\Provider\LoggedInUserProviderInterface;
 use Webburza\SyliusWishlistPlugin\Repository\WishlistRepositoryInterface;
 
-class WishlistController extends Controller
+class WishlistController extends AbstractController
 {
     /**
      * @var WishlistRepositoryInterface
@@ -28,7 +28,7 @@ class WishlistController extends Controller
     protected $loggedInUserProvider;
 
     /**
-     * @var TranslatorInterface
+     * @var DataCollectorTranslator
      */
     protected $translator;
 
@@ -45,14 +45,14 @@ class WishlistController extends Controller
     /**
      * @param WishlistRepositoryInterface $wishlistRepository
      * @param LoggedInUserProviderInterface $loggedInUserProvider
-     * @param TranslatorInterface $translator
+     * @param DataCollectorTranslator $translator
      * @param FormFactoryInterface $formFactory
      * @param bool $multipleWishlistMode
      */
     public function __construct(
         WishlistRepositoryInterface $wishlistRepository,
         LoggedInUserProviderInterface $loggedInUserProvider,
-        TranslatorInterface $translator,
+        DataCollectorTranslator $translator,
         FormFactoryInterface $formFactory,
         bool $multipleWishlistMode
     ) {
@@ -83,7 +83,7 @@ class WishlistController extends Controller
         ]);
 
         // Render view
-        return $this->render('@WebburzaSyliusWishlistPlugin/Resources/views/Account/index.html.twig', [
+        return $this->render('@WebburzaSyliusWishlistPlugin/Account/index.html.twig', [
             'wishlists' => $wishlists
         ]);
     }
@@ -129,7 +129,7 @@ class WishlistController extends Controller
             ]);
         }
 
-        return $this->render('@WebburzaSyliusWishlistPlugin/Resources/views/Account/create.html.twig', [
+        return $this->render('@WebburzaSyliusWishlistPlugin/Account/create.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -181,7 +181,7 @@ class WishlistController extends Controller
             }
         }
 
-        return $this->render('@WebburzaSyliusWishlistPlugin/Resources/views/Account/update.html.twig', [
+        return $this->render('@WebburzaSyliusWishlistPlugin/Account/update.html.twig', [
             'form'     => $form->createView(),
             'wishlist' => $wishlist
         ]);

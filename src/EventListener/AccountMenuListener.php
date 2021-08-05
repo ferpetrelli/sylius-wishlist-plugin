@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Webburza\SyliusWishlistPlugin\EventListener;
 
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Translation\DataCollectorTranslator;
 use Webburza\SyliusWishlistPlugin\Provider\LoggedInUserProviderInterface;
 use Webburza\SyliusWishlistPlugin\Repository\WishlistRepositoryInterface;
 
 class AccountMenuListener
 {
     /**
-     * @var TranslatorInterface
+     * @var DataCollectorTranslator
      */
     protected $translator;
 
@@ -34,13 +34,13 @@ class AccountMenuListener
     /**
      * FrontendMenuBuilderListener constructor.
      *
-     * @param TranslatorInterface $translator
+     * @param DataCollectorTranslator $translator
      * @param LoggedInUserProviderInterface $loggedInUserProvider
      * @param WishlistRepositoryInterface $wishlistRepository
      * @param $multipleWishlistMode
      */
     public function __construct(
-        TranslatorInterface $translator,
+        DataCollectorTranslator $translator,
         LoggedInUserProviderInterface $loggedInUserProvider,
         WishlistRepositoryInterface $wishlistRepository,
         $multipleWishlistMode

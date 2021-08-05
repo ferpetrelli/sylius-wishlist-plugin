@@ -17,20 +17,20 @@ sylius_grid:
                     label: sylius.ui.customer
                     sortable: customer.email
                     options:
-                        template: "@WebburzaSyliusWishlistPlugin/Resources/views/Admin/Grid/_customer.html.twig"
+                        template: "@WebburzaSyliusWishlistPlugin/Admin/Grid/_customer.html.twig"
                 public:
                     type: twig
                     label: webburza_sylius_wishlist.ui.public
                     sortable: ~
                     options:
-                        template: SyliusUiBundle:Grid/Field:yesNo.html.twig
+                        template: "@SyliusUi/Grid/Field/yesNo.html.twig"
                 item_count:
                     type: twig
                     label: webburza_sylius_wishlist.ui.item_count
                     path: .
                     sortable: ~
                     options:
-                        template: "@WebburzaSyliusWishlistPlugin/Resources/views/Admin/Grid/_count.html.twig"
+                        template: "@WebburzaSyliusWishlistPlugin/Admin/Grid/_count.html.twig"
                 createdAt:
                     type: datetime
                     label: sylius.ui.created_at

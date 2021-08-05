@@ -11,7 +11,7 @@ use Sylius\Component\Core\Repository\ProductVariantRepositoryInterface;
 use Sylius\Component\Order\Context\CartContextInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +23,7 @@ use Webburza\SyliusWishlistPlugin\Provider\LoggedInUserProviderInterface;
 use Webburza\SyliusWishlistPlugin\Resolver\ProductVariantFromRequestResolverInterface;
 use Webburza\SyliusWishlistPlugin\Resolver\WishlistFromRequestResolverInterface;
 
-class WishlistItemController extends Controller
+class WishlistItemController extends AbstractController
 {
     /**
      * @var RepositoryInterface
@@ -203,7 +203,7 @@ class WishlistItemController extends Controller
         }
 
         // Render the view
-        return $this->render('@WebburzaSyliusWishlistPlugin/Resources/views/Shop/Wishlist/_cartForm.html.twig', [
+        return $this->render('@WebburzaSyliusWishlistPlugin/Shop/Wishlist/_cartForm.html.twig', [
             'product' => $variant->getProduct(),
             'form'    => $form->createView()
         ]);

@@ -7,18 +7,19 @@ namespace Webburza\SyliusWishlistPlugin\Controller\Shop;
 use FOS\RestBundle\View\ConfigurableViewHandlerInterface;
 use FOS\RestBundle\View\View;
 use Sylius\Component\Core\Model\ShopUserInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Translation\TranslatorInterface;
+// use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Translation\DataCollectorTranslator;
 use Webburza\SyliusWishlistPlugin\Factory\WishlistFactoryInterface;
 use Webburza\SyliusWishlistPlugin\Model\WishlistInterface;
 use Webburza\SyliusWishlistPlugin\Provider\LoggedInUserProviderInterface;
 use Webburza\SyliusWishlistPlugin\Repository\WishlistRepositoryInterface;
 
-class WishlistController extends Controller
+class WishlistController extends AbstractController
 {
     /**
      * @var LoggedInUserProviderInterface
@@ -62,7 +63,7 @@ class WishlistController extends Controller
         LoggedInUserProviderInterface $loggedInUserProvider,
         WishlistRepositoryInterface $wishlistRepository,
         WishlistFactoryInterface $wishlistFactory,
-        TranslatorInterface $translator,
+        DataCollectorTranslator $translator,
         ConfigurableViewHandlerInterface $restViewHandler,
         bool $multipleWishlistMode
     ) {
@@ -105,7 +106,7 @@ class WishlistController extends Controller
         }
 
         return $this->handleView(
-            '@WebburzaSyliusWishlistPlugin/Resources/views/Shop/Wishlist/show.html.twig', [
+            '@WebburzaSyliusWishlistPlugin/Shop/Wishlist/show.html.twig', [
                 'wishlist' => $wishlist
             ], $request
         );
@@ -171,7 +172,7 @@ class WishlistController extends Controller
         }
 
         return $this->handleView(
-            '@WebburzaSyliusWishlistPlugin/Resources/views/Shop/Wishlist/show.html.twig', [
+            '@WebburzaSyliusWishlistPlugin/Shop/Wishlist/show.html.twig', [
                 'wishlist' => $wishlist
             ], $request
         );

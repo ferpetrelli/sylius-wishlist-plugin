@@ -14,8 +14,8 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('webburza_sylius_wishlist');
+        $treeBuilder = new TreeBuilder('webburza_sylius_wishlist');
+        $rootNode = $treeBuilder->getRootNode(); #('webburza_sylius_wishlist');
 
         $rootNode
             ->children()
