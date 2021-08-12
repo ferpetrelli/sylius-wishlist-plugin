@@ -83,7 +83,11 @@ class ProductVariantFromRequestResolver implements ProductVariantFromRequestReso
         if ($productVariantId = $request->get('productVariantId')) {
             $productVariant = $this->productVariantRepository->find($productVariantId);
         } else {
-            $productVariant = $this->resolveViaCartForm($request);
+            if ($productVariantCode = $request->get('productVariantCode')) {
+                $productVariant = $this->productVariantRepository->findOneByCode($productVariantCode);
+            } else {
+                $productVariant = $this->resolveViaCartForm($request);
+            }
         }
 
         if (!$productVariant) {
